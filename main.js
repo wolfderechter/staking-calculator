@@ -1,6 +1,5 @@
 
 const calculateBtn = document.getElementById('calculate');
-const dateStaked = document.getElementById('dateStaked')
 const ethStaked = document.getElementById('ethStaked')
 const rethStaked = document.getElementById('rethStaked')
 const returns = document.getElementById('returns')
@@ -9,11 +8,8 @@ calculateBtn.addEventListener('click', async () => {
     // calculate the difference between the eth put in and how much eth I could receive right now from swapping reth to eth
 
     // find out the swap rate of reth/eth
-    // data = fetchAsync('https://api.coingecko.com/api/v3/coins/rocket-pool-eth?localization=false&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false');
     data = await fetchAsync('https://api.coingecko.com/api/v3/simple/price?ids=rocket-pool-eth%2Cethereum&vs_currencies=eth%2Cusd');
-    console.log(data)
-    // json = JSON.parse(data)
-    // console.log(json)
+
 
     var currentRethRate = data["rocket-pool-eth"].eth;
     // debugger;
@@ -26,7 +22,7 @@ calculateBtn.addEventListener('click', async () => {
 
     returns.innerHTML = '';
     var returnsObject = document.createElement('p');
-    returnsObject.innerText = `You currently have ${convertedToETH} ETH or ${convertedToUSD} USD.\n You gained ${deltaInETH} ETH or ${deltaInUSD} USD since staking`;
+    returnsObject.innerText = `You currently have ${convertedToETH.toFixed(7)} ETH or ${convertedToUSD.toFixed(2)} USD at current market rate.\n You gained ${deltaInETH.toFixed(8)} ETH or ${deltaInUSD.toFixed(2)} USD since staking`;
     returns.appendChild(returnsObject);
 })
 
