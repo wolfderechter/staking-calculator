@@ -12,7 +12,6 @@ calculateBtn.addEventListener('click', async () => {
 
 
     var currentRethRate = data["rocket-pool-eth"].eth;
-    // debugger;
 
     var convertedToETH = rethStaked.valueAsNumber * currentRethRate;
     var convertedToUSD = convertedToETH * data["ethereum"].usd;
@@ -29,6 +28,6 @@ calculateBtn.addEventListener('click', async () => {
 async function fetchAsync(url) {
     let response = await fetch(url);
     let data = await response.json();
-    // let data = await response.text();
+
     return data;
 }
