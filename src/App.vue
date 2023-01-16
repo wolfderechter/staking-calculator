@@ -61,7 +61,6 @@ function calculateReturns() {
   if(dateStaked){
     let today = new Date();
     let amountOfDays = (today.getTime() - new Date(dateStaked).getTime()) / (1000*3600*24);
-    console.log(amountOfDays + " days");
 
     let deltaPer24hInETH = deltaInETH / amountOfDays;
     let deltaPer24hInUSD = deltaInUSD / amountOfDays;
